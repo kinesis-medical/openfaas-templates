@@ -10,9 +10,9 @@ faas-cli template pull https://github.com/tim-brand/openfaas-templates
 ```
 
 ## Available templates
-- node16-ts
-
-## New function based on my template
+### `node16-ts`
+This template supports the use of Typescript.
+The build process will take place during the docker build.
 ```
 faas-cli new my-ts-function --lang node16-ts
 ```
