@@ -6,7 +6,7 @@ Currently I only have one template, which is the `node16-ts`
 ## Pull templates
 Using the following command you can pull the templates
 ```
-faas-cli template pull https://github.com/tim-brand/openfaas-template-node16-ts
+faas-cli template pull https://github.com/tim-brand/openfaas-templates
 ```
 
 ## Available templates
