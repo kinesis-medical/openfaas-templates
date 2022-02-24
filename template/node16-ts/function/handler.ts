@@ -1,4 +1,6 @@
-async function handle(event: any, context: any) {
+import { IFunctionEvent, IFunctionContext } from './interfaces/i-handler-parameters'
+
+async function handle(event: IFunctionEvent, context: IFunctionContext) {
   const result = {
     'body': JSON.stringify(event.body),
     'content-type': event.headers["content-type"]
