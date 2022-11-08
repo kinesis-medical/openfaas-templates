@@ -1,0 +1,17 @@
+{
+  "name": "openfaas-function",
+  "version": "1.0.0",
+  "description": "OpenFaaS Function",
+  "main": "handler.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "Tim Brand <t.brand@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "typescript": "^4.8.4"
+  }
+}
