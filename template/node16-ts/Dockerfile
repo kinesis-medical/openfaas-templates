@@ -68,7 +68,7 @@ COPY index.js ./
 # entry allows caching of npm install
 
 WORKDIR /home/app/function
-COPY --from=build /home/app/function/dist ./
+COPY --from=build /home/app/function/dist/function ./
 COPY --from=dependencies /home/app/function/prod_node_modules ./node_modules
 
 # Run any tests that may be available
