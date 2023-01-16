@@ -114,8 +114,15 @@ const middleware = async (req, res) => {
         }
     };
 
-    const fnEvent = new FunctionEvent(req);
+    let fnEvent = new FunctionEvent(req);
     const fnContext = new FunctionContext(cb);
+
+    if (loaderResult) {
+        fnEvent = {
+            ...fnEvent,
+            ...loaderResult,
+        }
+    }
 
     Promise.resolve(handler(fnEvent, fnContext, cb))
     .then(res => {
@@ -137,6 +144,15 @@ app.options('/*', middleware);
 
 const port = process.env.http_port || 3000;
 
-app.listen(port, () => {
-    console.log(`node16 listening on port: ${port}`)
-});
+let loaderResult = undefined
+;(async() => {
+    try {
+        loaderResult = await require('./function/loader')()
+    } catch (err) {
+        console.warn("Loader failed", { error: err.message })
+    }
+
+    app.listen(port, () => {
+        console.log(`Server listening on port: ${port}`)
+    });
+})()
