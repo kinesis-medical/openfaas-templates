@@ -1,12 +1,11 @@
 # OpenFaaS Templates
 
 These templates extend the list of available templates by the OpenSaaS community.
-Currently I only have one template, which is the `node16-ts`
 
 ## Pull templates
 Using the following command you can pull the templates
 ```
-faas-cli template pull https://github.com/tim-brand/openfaas-templates
+faas-cli template pull https://github.com/kinesis-medical/openfaas-templates
 ```
 
 ## Available templates
