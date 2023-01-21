@@ -6,7 +6,7 @@
 
 const express = require('express')
 const app = express()
-const handler = require('./function/handler');
+const handler = require('./handler');
 const bodyParser = require('body-parser')
 
 const defaultMaxSize = '100kb' // body-parser default
@@ -147,7 +147,7 @@ const port = process.env.http_port || 3000;
 let loaderResult = undefined
 ;(async() => {
     try {
-        loaderResult = await require('./function/loader')()
+        loaderResult = await require('./loader')()
     } catch (err) {
         console.warn("Loader failed", { error: err.message })
     }
