@@ -56,10 +56,9 @@ RUN npm run build
 FROM base as release
 
 # Wrapper/boot-strapper
-COPY package.json ./
 
 # This ordering means the npm installation is cached for the outer function handler.
-RUN npm i
+# RUN npm i
 
 # Copy outer function handler
 COPY index.js ./
@@ -67,7 +66,9 @@ COPY index.js ./
 # COPY function node packages and install, adding this as a separate
 # entry allows caching of npm install
 
-WORKDIR /home/app/function
+WORKDIR /home/app
+COPY function/package*.json ./
+COPY function/tsconfig.json ./
 COPY --from=build /home/app/function/dist/function ./
 COPY --from=dependencies /home/app/function/prod_node_modules ./node_modules
 
@@ -78,7 +79,7 @@ COPY --from=dependencies /home/app/function/prod_node_modules ./node_modules
 WORKDIR /home/app/
 
 ENV cgi_headers="true"
-ENV fprocess="node index.js"
+ENV fprocess="npm start"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 
