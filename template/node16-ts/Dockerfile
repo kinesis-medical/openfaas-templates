@@ -67,9 +67,7 @@ COPY index.js ./
 # entry allows caching of npm install
 
 WORKDIR /home/app
-COPY function/package*.json ./
-COPY function/tsconfig.json ./
-COPY --from=build /home/app/function/dist/function ./
+COPY --from=build /home/app/function/dist ./
 COPY --from=dependencies /home/app/function/prod_node_modules ./node_modules
 
 # Run any tests that may be available
@@ -79,7 +77,7 @@ COPY --from=dependencies /home/app/function/prod_node_modules ./node_modules
 WORKDIR /home/app/
 
 ENV cgi_headers="true"
-ENV fprocess="npm start"
+ENV fprocess="node index.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 
